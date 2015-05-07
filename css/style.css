@@ -213,3 +213,10 @@ span {
     display: block;
   }
 }
+
+hr {
+  height: 0;
+  border: 0 none;
+  border-bottom: 1px solid orange;
+  margin: 0 0 -0.5rem;
+}
