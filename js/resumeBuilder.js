@@ -31,7 +31,7 @@ $("#header").prepend(formattedRole);
 var formattedName = HTMLheaderName.replace("{{data}}", bio.name);
 $("#header").prepend(formattedName);
 
-var str1 = "audaloca";
+var str1 = "audacity";
 var str2 = str1.slice(1);
 console.log(str2);
 
@@ -239,6 +239,7 @@ var education = {
         }
         $("#education").append(HTMLonlineClasses);
         for(var key in education.online_courses) {
+
             var thisJob = education.online_courses[key];
             if(thisJob['title']) {
                 var fmtonlineTitle = HTMLonlineTitle.replace("{{data}}",thisJob['title']);
@@ -252,6 +253,7 @@ var education = {
             if(thisJob['url']) {
                 var fmtonlineURL = HTMLonlineURL.replace("{{data}}",thisJob['url']);
             }
+            $("#education").append(HTMLschoolStart);
             $(".education-entry:last").append(fmtonlineTitle);
             $(".education-entry:last").append(fmtonlineSchool);
             $(".education-entry:last").append(fmtonlineDates);
