@@ -1,4 +1,3 @@
-    //$("#main").append(["Hello," + " " + " "]);
 // var awesomeThoughts;
 // awesomeThoughts = "I am Purnima. I'm AWESOME!";
 // console.log(awesomeThoughts);
@@ -13,11 +12,12 @@ var bio = {};
 bio.name = "Purnima Gupta";
 bio.role = "Web Developer";
 bio.contacts = {
-    "mobile": HTMLmobile.replace("{{mobile}}","8750677715"),
-    "email": HTMLcontactGeneric.replace("{{contact}}","purnimaguptapccs@gmail.com"),
-    "github": HTMLgithub.replace("{{github}}","pooyax14"),
-    "twitter":HTMLtwitter.replace("{{twitter}}","@pooyax14"),
-    "location":HTMLlocation.replace("{{location}}","Mumbai")
+    "mobile":"8750677715",
+    "email": "purnimaguptapccs@gmail.com",
+    "github":"pooyax14",
+    "twitter": "@pooyax14",
+    "blog": "https://pooyax14.wordpress.com",
+    "location": "Mumbai"
 };
 
 bio.welcome_message = "Hi, I am " + bio.name + "! I am an awesome web" + 
@@ -30,6 +30,44 @@ $("#header").prepend(formattedRole);
 
 var formattedName = HTMLheaderName.replace("{{data}}", bio.name);
 $("#header").prepend(formattedName);
+
+bio["display"] = function() {
+    $.each(bio.contacts, function(key, value) {
+        console.log("Iterating on key -> " + key + 
+            ", value -> " + value);
+        // $("#header").append(HTMLcontactGeneric);
+
+        switch(key) {
+            case "mobile": 
+                var fmtMobile = HTMLmobile.replace("{{data}}", value);
+                break;
+            case "email":
+                var fmtEmail = HTMLemail.replace("{{data}}", value);
+                break;
+            case "github":
+                var fmtGithub = HTMLgithub.replace("{{data}}", value);
+                break;
+            case "twitter":
+                var fmtTwitter = HTMLtwitter.replace("{{data}}", value);
+                break;
+            case "blog":
+                var fmtBlog = HTMLblog.replace("{{data}}", value);
+                break;
+            case "location":
+                var fmtLocation = HTMLlocation.replace("{{data}}", value);
+                break;
+        }
+
+        $("#topContacts").append(fmtMobile);
+        $("#topContacts").append(fmtEmail);
+        $("#topContacts").append(fmtGithub );
+        $("#topContacts").append(fmtBlog );
+        $("#topContacts").append(fmtTwitter);
+        $("#topContacts").append(fmtLocation);
+    });
+};
+
+bio.display();
 
 var str1 = "audacity";
 var str2 = str1.slice(1);
